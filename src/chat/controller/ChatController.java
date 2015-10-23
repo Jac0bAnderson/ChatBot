@@ -22,7 +22,7 @@ public ChatController()
 
 	public void start()
 	{
-		myDisplay.showOutput("hello "  +myChatbot.getUserName());
+		myDisplay.showOutput("hello " a +myChatbot.getUserName());
 	}
 	
 }
