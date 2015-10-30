@@ -24,6 +24,7 @@ public ChatController()
 	{
 		myDisplay.showOutput("hello "  +myChatBot.getUserName());
 		chat();
+		
 	}
 	
 	private void chat()

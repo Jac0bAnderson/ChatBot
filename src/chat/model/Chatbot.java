@@ -2,6 +2,8 @@ package chat.model;
 
 import java.util.ArrayList;
 
+import chat.view.ChatView;
+
 /**
  * added a constructor 
  * @author Jake
@@ -13,6 +15,7 @@ public class Chatbot
 	private ArrayList<String> politicalTopicList;
 	private String userName;
 	private String content;
+	private ChatView myDisplay;
 	
 	/**
 	 * Creates an instance of the Chatbot with the supplied username.
@@ -42,6 +45,7 @@ public class Chatbot
 	this.memesList.add("highschool teacher");
 	this.memesList.add("me gusta");
 	this.memesList.add("troll");
+	this.memesList.add("hank hill");
 	}
 	
 	private void buildPoliticalTopicsList()
@@ -104,7 +108,13 @@ boolean hasContent = false;
 	 */
 	public boolean memeChecker(String currentInput)
 	{
-		return false;
+		boolean hasMeme = false;
+		if(currentInput.equals(memesList))
+		{
+			myDisplay.showOutput("You memed");
+		}
+		
+		return hasMeme;
 	}
 	
 	/**
@@ -122,6 +132,7 @@ boolean hasContent = false;
 	 */
 	public String getContent()
 	{
+		
 		return content;
 	}
 	
