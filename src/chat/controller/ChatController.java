@@ -41,7 +41,17 @@ public ChatController()
 			{
 				myDisplay.showOutput("i did not know your interested in " +myChatBot.getContent());
 			}
-			conversation = myDisplay.grabInput(conversation);
+			
+			else if(myChatBot.memeChecker(conversation))
+			{
+				myDisplay.showOutput("dat meme be lame.#rekt");
+			}
+			else if(myChatBot.politicalTopicChecker(conversation))
+			{
+				myDisplay.showOutput("wrong" );
+			}
+			conversation =myDisplay.grabInput(conversation);
+			
 			
 			
 			
