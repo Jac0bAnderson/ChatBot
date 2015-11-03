@@ -44,11 +44,13 @@ public ChatController()
 			
 			else if(myChatBot.memeChecker(conversation))
 			{
-				myDisplay.showOutput("dat meme be lame.#rekt");
+				
+				myDisplay.showOutput("Is that even a meme?");
+				
 			}
 			else if(myChatBot.politicalTopicChecker(conversation))
 			{
-				myDisplay.showOutput("wrong" );
+				myDisplay.showOutput("intresting" );
 			}
 			conversation =myDisplay.grabInput(conversation);
 			

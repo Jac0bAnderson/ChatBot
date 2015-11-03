@@ -35,17 +35,42 @@ public class Chatbot
 	
 	private void buildMemesList()
 	{
+		//cute animals
 	this.memesList.add("cute andimals");
+	this.memesList.add("kittens");
+	this.memesList.add("puppies");
+	//doge
 	this.memesList.add("doge");
+	this.memesList.add("much");
+	this.memesList.add("wow");
+	//what if it told you
 	this.memesList.add("what if i told you");
+	
+	//aliens
 	this.memesList.add("aliens");
+	//bad luck brian
 	this.memesList.add("bad luck brian");
+	//pepe
 	this.memesList.add("rare pepe");
+	this.memesList.add("pepe");
+	//spoderman
 	this.memesList.add("spoderman");
+	//highschool teacher
 	this.memesList.add("highschool teacher");
+	//me gusta
 	this.memesList.add("me gusta");
+	this.memesList.add("rage faces");
+	//troll face
 	this.memesList.add("troll");
+	this.memesList.add("rage faces");
+	this.memesList.add("troll face");
+	this.memesList.add("Lol");
+	this.memesList.add("lolololol");
+	//hank hill
 	this.memesList.add("hank hill");
+	this.memesList.add("propane");
+	this.memesList.add("dang it bobby");
+	this.memesList.add("america");
 	}
 	
 	private void buildPoliticalTopicsList()
@@ -56,6 +81,7 @@ public class Chatbot
 		this.politicalTopicList.add("free trade");
 		this.politicalTopicList.add("welfare");
 		this.politicalTopicList.add("poverty");
+		this.politicalTopicList.add("free barret brown");
 	}
 	
 	/**
