@@ -37,37 +37,9 @@ public ChatController()
 		String conversation = myDisplay.grabInput("what would you like to talk about today?");
 		while(myChatBot.lengthChecker(conversation))
 		{
-			if(myChatBot.contentChecker(conversation))
-			{
-				myDisplay.showOutput("i did not know your interested in " +myChatBot.getContent());
-			}
-			
-			else if(myChatBot.memeChecker(conversation))
-			{
-				
-				myDisplay.showOutput("Is that even a meme?");
-				
-			}
-			else if(myChatBot.politicalTopicChecker(conversation))
-			{
-				myDisplay.showOutput("intresting" );
-			}
-			conversation =myDisplay.grabInput(conversation);
-			
-			
-			
-			
-			
-//			if(!simpleBot.quitChecker(conversation))
-//			{
-//				conversation = simpleBot.processInput(conversation);
-//			}
-//			else
-//			{
-//				shutDown();
-//			}
+			conversation = myDisplay.grabInput(conversation);
 		}
-	}
+				}
 	
 	private void shutdown()
 	{

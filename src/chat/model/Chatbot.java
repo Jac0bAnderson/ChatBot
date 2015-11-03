@@ -203,5 +203,54 @@ boolean hasContent = false;
 	{
 		
 	}
+	
+	public String processConveration(String currentInput)
+	{
+		String nextConversation ="what would you like to talk bout m8";
+		int randomTopic = (int) (Math.random()*5);// makes a random number between 0-4
+		
+		switch (randomTopic)
+		{
+		case 0:
+			if(memeChecker(currentInput))
+			{
+				nextConversation = "That is very popular meme this year. what else are you"
+						+"wanting to talk about?";
+			}
+			break;
+		case 1:
+			if(politicalTopicChecker(currentInput))
+			{
+				nextConversation = "oh yea thats political.what else do you want to?"
+						+"talk about";
+			}
+			break;
+		case 2:
+			if(contentChecker(currentInput))
+			{
+				nextConversation = "oh yea. what else"
+						+"do you  to talk about";
+			}
+			break;
+		case 3:
+			if(currentInput.length()>20)
+			{
+				nextConversation = "idk. what else"
+						+"do you want to ask";
+			}
+			break;
+		case 4:
+			nextConversation = "yeaaaaaaaaaaaa.waht else"
+			+"do you want to talk about";
+			break;
+			default:
+				nextConversation = "what";
+				break;
+		}//every line after a "case" line needs a break; the default is incase nothing else matches
+		return nextConversation;
+	}
+	
+	
+	
 }
 	
