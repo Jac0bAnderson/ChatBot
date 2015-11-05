@@ -217,12 +217,20 @@ boolean hasContent = false;
 				nextConversation = "That is very popular meme this year. what else are you"
 						+"wanting to talk about?";
 			}
+			else
+			{
+				System.out.println("failed case 0");
+			}
 			break;
 		case 1:
 			if(politicalTopicChecker(currentInput))
 			{
 				nextConversation = "oh yea thats political.what else do you want to?"
 						+"talk about";
+			}
+			else
+			{
+				System.out.println("failed case 1");
 			}
 			break;
 		case 2:
@@ -231,12 +239,20 @@ boolean hasContent = false;
 				nextConversation = "oh yea. what else"
 						+"do you  to talk about";
 			}
+			else
+			{
+				System.out.println("failed case 2");
+			}
 			break;
 		case 3:
 			if(currentInput.length()>20)
 			{
 				nextConversation = "idk. what else"
 						+"do you want to ask";
+			}
+			else
+			{
+				System.out.println("failed case 3");
 			}
 			break;
 		case 4:
