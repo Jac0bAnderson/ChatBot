@@ -13,6 +13,7 @@ import chat.view.ChatFrame;
 public class ChatController {
 private Chatbot myChatBot;
 private ChatView myDisplay;
+private ChatFrame baseFrame;
 
 public ChatController()
 {
