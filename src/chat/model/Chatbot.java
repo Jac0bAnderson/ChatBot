@@ -200,7 +200,7 @@ boolean hasContent = false;
 	 */
 	public ArrayList<String> getPoliticalTopicList()
 	{
-		return null;
+		return politicalTopicList;
 	}
 	
 	/**
