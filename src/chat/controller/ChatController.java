@@ -37,16 +37,53 @@ public ChatController()
 		//showOutput =displayText
 		//grabInput = collectUserText
 		
-		String conversation = myDisplay.grabInput("what would you like to talk about today?");
-		while(myChatBot.lengthChecker(conversation))
-		{
-			conversation = myDisplay.grabInput(conversation);
-		}
+		//String conversation = myDisplay.grabInput("what would you like to talk about today?");
+		//while(myChatBot.lengthChecker(conversation))
+		//{
+		//	conversation = myDisplay.grabInput(conversation);
+		//}
 				}
-	
+	public String userToChatBot(String userText)
+	{
+String response = "";
+		
+		if(myChatBot.quitChecker(userText))
+		{
+			shutdown();
+		}
+		
+		response = myChatBot.processConversation(userText);
+		
+		return response;
+	}
 	private void shutdown()
 	{
-		
+		myDisplay.showOutput("Goodbye" + myChatBot.getUserName() + " i will probs forget you");
+		System.exit(0);
+	}
+
+	public Chatbot getChatbot() {
+		return myChatBot;
+	}
+
+	public void setMyChatBot(Chatbot myChatBot) {
+		this.myChatBot = myChatBot;
+	}
+
+	public ChatView getChatView() {
+		return myDisplay;
+	}
+
+	public void setMyDisplay(ChatView myDisplay) {
+		this.myDisplay = myDisplay;
+	}
+
+	public ChatFrame getBaseFrame() {
+		return baseFrame;
+	}
+
+	public void setBaseFrame(ChatFrame baseFrame) {
+		this.baseFrame = baseFrame;
 	}
 	
 }

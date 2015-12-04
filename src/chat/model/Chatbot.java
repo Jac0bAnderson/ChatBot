@@ -212,7 +212,7 @@ boolean hasContent = false;
 		
 	}
 	
-	public String processConveration(String currentInput)
+	public String processConversation(String currentInput)
 	{
 		String nextConversation ="what would you like to talk bout m8";
 		int randomTopic = (int) (Math.random()*5);// makes a random number between 0-4
@@ -274,6 +274,50 @@ boolean hasContent = false;
 		return nextConversation;
 	}
 	
+	public boolean quitChecker(String currentInput)
+	{
+		boolean isQuiting = false;
+		
+		if(currentInput.equalsIgnoreCase("quit") )
+		{
+			isQuiting = true;
+		} 
+		
+		
+		return isQuiting;
+	}
+	public boolean keyboardMashChecker(String currentInput)
+	{
+		boolean mashTyping = false;
+		
+		if(currentInput.equals("sdf") || currentInput.equals("dfg") || currentInput.equals("cvb") || currentInput.equals(",./"))
+		{
+			mashTyping = true;
+		} 
+		
+		return mashTyping;		
+	}
+
+	public ChatView getMyDisplay() {
+		return myDisplay;
+	}
+
+	public void setMyDisplay(ChatView myDisplay) {
+		this.myDisplay = myDisplay;
+	}
+
+	public void setMemesList(ArrayList<String> memesList) {
+		this.memesList = memesList;
+	}
+
+	public void setPoliticalTopicList(ArrayList<String> politicalTopicList) {
+		this.politicalTopicList = politicalTopicList;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	
 	
 }
