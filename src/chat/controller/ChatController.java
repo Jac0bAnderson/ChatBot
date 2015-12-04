@@ -2,6 +2,7 @@ package chat.controller;
 
 import chat.model.Chatbot;
 import chat.view.ChatView;
+import chat.view.ChatFrame;
 
 
 /**
@@ -12,12 +13,14 @@ import chat.view.ChatView;
 public class ChatController {
 private Chatbot myChatBot;
 private ChatView myDisplay;
+private ChatFrame baseFrame;
 
 public ChatController()
 {
 	myDisplay =  new ChatView();
 	String userName = myDisplay.grabInput("what is your name?");
 	myChatBot = new Chatbot(userName);
+	baseFrame = new ChatFrame(this);
 }
 
 	public void start()

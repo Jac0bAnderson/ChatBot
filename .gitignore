@@ -1,0 +1,6 @@
+bin/
+bin/chat/model/Chatbot.class
+
+*.class
+
+bin/chat/test/ChatbotTest.class
