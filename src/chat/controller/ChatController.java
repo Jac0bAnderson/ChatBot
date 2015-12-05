@@ -1,5 +1,7 @@
+//package of the class
 package chat.controller;
 
+//imports
 import chat.model.Chatbot;
 import chat.view.ChatView;
 import chat.view.ChatFrame;
@@ -10,6 +12,7 @@ import chat.view.ChatFrame;
  * @author Jake
  * @version 1.11 10/21/15 fixed error
  */
+//Declarations 
 public class ChatController {
 private Chatbot myChatBot;
 private ChatView myDisplay;
@@ -23,6 +26,7 @@ public ChatController()
 	baseFrame = new ChatFrame(this);
 }
 
+   // tells the chat bot to say hello and get the users name on startup
 	public void start()
 	{
 		myDisplay.showOutput("hello "  +myChatBot.getUserName());
@@ -46,9 +50,10 @@ public ChatController()
 	public String userToChatBot(String userText)
 	{
 String response = "";
-		
+		//shuts down the program if quitchecker is true
 		if(myChatBot.quitChecker(userText))
 		{
+			//calls the shutdown method
 			shutdown();
 		}
 		
@@ -56,12 +61,14 @@ String response = "";
 		
 		return response;
 	}
+// the shutdown method
 	private void shutdown()
 	{
+		// says goodbye to the user using their name
 		myDisplay.showOutput("Goodbye" + myChatBot.getUserName() + " i will probs forget you");
 		System.exit(0);
 	}
-
+// getters and setterse
 	public Chatbot getChatbot() {
 		return myChatBot;
 	}
