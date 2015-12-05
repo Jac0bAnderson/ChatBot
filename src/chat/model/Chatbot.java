@@ -1,16 +1,18 @@
+//package of class
 package chat.model;
 
+//import section
 import java.util.ArrayList;
-
 import chat.view.ChatView;
 
 /**
  * added a constructor 
  * @author Jake
- * @version 1.2 10/21/15
+ * @version 1.3 12/5/15
  */
 public class Chatbot
 {
+	//declaration 
 	private ArrayList<String> memesList;
 	private ArrayList<String> politicalTopicList;
 	private String userName;
@@ -28,11 +30,11 @@ public class Chatbot
 		this.userName = userName;
 		this.content = "content";
 		
-		
+		//calls the methods memeslist and politicaltopiclists
 		buildMemesList();
 		buildPoliticalTopicsList();
 	}
-	
+	//memes list method which holds all the memes that the chat bot cant talk about
 	private void buildMemesList()
 	{
 		//cute animals
@@ -72,7 +74,7 @@ public class Chatbot
 	this.memesList.add("dang it bobby");
 	this.memesList.add("america");
 	}
-	
+	//PoliticalTopicsList method that has all the political topics you can ask the chat bot
 	private void buildPoliticalTopicsList()
 	{
 		this.politicalTopicList.add("trump");
@@ -211,7 +213,7 @@ boolean hasContent = false;
 	{
 		
 	}
-	
+	// randomly selects topics for the chat bot to talk about
 	public String processConversation(String currentInput)
 	{
 		String nextConversation ="what would you like to talk bout m8";
@@ -273,23 +275,24 @@ boolean hasContent = false;
 		}//every line after a "case" line needs a break; the default is incase nothing else matches
 		return nextConversation;
 	}
-	
+	// checks if the user types quit 
 	public boolean quitChecker(String currentInput)
 	{
 		boolean isQuiting = false;
-		
+		// if the user types quit it sets isQuiting to true
 		if(currentInput.equalsIgnoreCase("quit") )
 		{
 			isQuiting = true;
 		} 
 		
-		
+	
 		return isQuiting;
 	}
+	// sees if the user is keyboard mashing
 	public boolean keyboardMashChecker(String currentInput)
 	{
 		boolean mashTyping = false;
-		
+		//sets mashTyping to true if they are mashing the keyboard
 		if(currentInput.equals("sdf") || currentInput.equals("dfg") || currentInput.equals("cvb") || currentInput.equals(",./"))
 		{
 			mashTyping = true;
@@ -297,7 +300,7 @@ boolean hasContent = false;
 		
 		return mashTyping;		
 	}
-
+//getters and setters
 	public ChatView getMyDisplay() {
 		return myDisplay;
 	}
@@ -321,4 +324,3 @@ boolean hasContent = false;
 	
 	
 }
-	
