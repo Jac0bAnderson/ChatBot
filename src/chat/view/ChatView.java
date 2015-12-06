@@ -15,7 +15,7 @@ public class ChatView
 	
 	public ChatView()
 	{
-		windowMessage = "Hello from your friendly Pepe Bot ( ͡° ͜ʖ ͡°)";
+		windowMessage = "Hello from your friendly Pepe Bot";
 		chatIcon = new ImageIcon(getClass().getResource("images/PepeBot.png"));
 	}
 	/**
