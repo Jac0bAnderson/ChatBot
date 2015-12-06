@@ -38,7 +38,7 @@ public class Chatbot
 	private void buildMemesList()
 	{
 		//cute animals
-	this.memesList.add("cute andimals");
+	this.memesList.add("cute animals");
 	this.memesList.add("kittens");
 	this.memesList.add("puppies");
 	//doge
@@ -79,8 +79,8 @@ public class Chatbot
 	{
 		this.politicalTopicList.add("trump");
 		this.politicalTopicList.add("election");
-		this.politicalTopicList.add("democrat");
-		this.politicalTopicList.add("republican");
+		this.politicalTopicList.add("Democrat");
+		this.politicalTopicList.add("Republican");
 		this.politicalTopicList.add("liberal");
 		this.politicalTopicList.add("conservative");
 		this.politicalTopicList.add("clinton");
@@ -90,7 +90,7 @@ public class Chatbot
 		this.politicalTopicList.add("fiorina");
 		this.politicalTopicList.add("sanders");
 		this.politicalTopicList.add("vote");
-		this.politicalTopicList.add("11/8/2016");
+		this.politicalTopicList.add("11/4/16");
 		
 	}
 	
@@ -320,7 +320,8 @@ boolean hasContent = false;
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
+// end of getters and setters
 	
 	
 }
+	
