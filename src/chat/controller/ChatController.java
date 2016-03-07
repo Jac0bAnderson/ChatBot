@@ -2,27 +2,29 @@
 package chat.controller;
 
 //imports
-import chat.model.Chatbot;
-import chat.view.ChatView;
-import chat.view.ChatFrame;
+import chat.model.*;
+import chat.view.*;
 
 
 /**
  * Application controller for the chatbot project
  * @author Jake
- * @version 1.11 10/21/15 fixed error
+ * @version 1.2 10/21/15 fixed error
  */
 //Declarations 
 public class ChatController {
 private Chatbot myChatBot;
 private ChatView myDisplay;
 private ChatFrame baseFrame;
+private CTECTwitter chatTwitter;
 
 public ChatController()
 {
 	myDisplay =  new ChatView();
 	String userName = myDisplay.grabInput("what is your name?");
 	myChatBot = new Chatbot(userName);
+	//baseFrame = new ChatFrame(this);
+	chatTwitter = new CTECTwitter(this);
 	baseFrame = new ChatFrame(this);
 }
 
@@ -67,6 +69,14 @@ String response = "";
 		// says goodbye to the user using their name
 		myDisplay.showOutput("Goodbye" + myChatBot.getUserName() + " i will probs forget you");
 		System.exit(0);
+	}
+	public void sendTweet(String tweetText)
+	{
+		chatTwitter.sendTweet(tweetText);
+	}
+	public void handleErrors(String errorMessage)
+	{
+		myDisplay.showOutput(errorMessage);
 	}
 // getters and setterse
 	public Chatbot getChatbot() {

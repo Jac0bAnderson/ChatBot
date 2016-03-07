@@ -91,6 +91,13 @@ private void setupLayout()
 			}
 		
 		});
+		tweetButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent clickEvent)
+			{
+				baseController.sendTweet("No text to send");
+			}
+		});
 	}
 	public ChatController getBaseController() {
 		return baseController;
