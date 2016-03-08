@@ -27,7 +27,7 @@ public void sendTweet(String tweet)
 {
 	try 
 	{
-		chatbotTwitter.updateStatus("");
+		chatbotTwitter.updateStatus("  ");
 	} 
 	catch (TwitterException error) 
 	{

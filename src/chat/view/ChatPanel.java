@@ -42,6 +42,9 @@ public ChatPanel(ChatController baseController)
 	TextField = new JTextField("",25);
 	
 	TextField.setToolTipText("Type here");
+	tweetButton = new JButton("Click to tweet");
+	baseLayout.putConstraint(SpringLayout.WEST, tweetButton, 21, SpringLayout.WEST, this);
+	baseLayout.putConstraint(SpringLayout.SOUTH, tweetButton, -76, SpringLayout.NORTH, TextField);
 	
 	setupChatPane();
 	setupPanel();
@@ -59,6 +62,7 @@ private void setupChatPane()
 }
 private void setupPanel()
 {
+	this.add(tweetButton);
 	this.add(textPane);//chatTextArea used to be here
 	this.add(TextField);
 	this.add(chatButton);
