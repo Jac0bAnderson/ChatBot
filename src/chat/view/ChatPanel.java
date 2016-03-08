@@ -23,6 +23,8 @@ private JScrollPane textPane;
 private JButton tweetButton;
 private JButton saveButton;
 private JButton loadButton;
+private JButton saveText;
+private JButton readText;
 
 public ChatPanel(ChatController baseController)
 {
