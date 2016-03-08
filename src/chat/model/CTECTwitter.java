@@ -1,8 +1,10 @@
 package chat.model;
 
 import java.util.ArrayList;
-import chat.controller.ChatController;
 
+import javax.swing.JOptionPane;
+
+import chat.controller.ChatController;
 import twitter4j.*;
 /**
  * 
@@ -25,9 +27,10 @@ public CTECTwitter(ChatController baseController)
 }
 public void sendTweet(String tweet)
 {
+	String tweetTExt = JOptionPane.showInputDialog("");
 	try 
 	{
-		chatbotTwitter.updateStatus("  ");
+		chatbotTwitter.updateStatus(tweetTExt);
 	} 
 	catch (TwitterException error) 
 	{
