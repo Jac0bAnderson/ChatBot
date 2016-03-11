@@ -78,6 +78,11 @@ String response = "";
 	{
 		myDisplay.showOutput(errorMessage);
 	}
+	public String analyze(String userName)
+	{
+		String userAnalysis = "the twitter user" + userName + "has ";
+		return userAnalysis;
+	}
 // getters and setterse
 	public Chatbot getChatbot() {
 		return myChatBot;

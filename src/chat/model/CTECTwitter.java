@@ -1,6 +1,7 @@
 package chat.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -25,6 +26,41 @@ public CTECTwitter(ChatController baseController)
 	wordList = new  ArrayList <String>();
 	
 }
+public void loadTweets(String twitterHandle)throws TwitterException
+{
+	Paging statusPage = new Paging(1,200);
+	int page =1;
+	while(page <= 10)
+	{
+		statusPage.setPage(page);
+		statusList.addAll(chatbotTwitter.getUserTimeline(twitterHandle, statusPage));
+		page++;
+	}
+	for(Status currentStatus : statusList)
+	{
+		String[] tweetText = currentStatus.getText().split(" ");
+		for(String word : tweetText)
+		{
+			wordList.add(removePunctuation(word).toLowerCase());
+		}
+	}
+	removeCommonEnglishWords(wordList);
+	removeEmptyText();
+}
+private String removePunctuation(String word)
+{
+	
+	return null;
+}
+private void removeCommonEnglishWords(ArrayList<String> text)
+{
+	
+}
+private void removeEmptyText()
+{
+	
+}
+
 public void sendTweet(String tweet)
 {
 	String tweetTExt = JOptionPane.showInputDialog("");

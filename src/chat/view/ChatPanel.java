@@ -3,7 +3,10 @@ package chat.view;
 
 //imports 
 import javax.swing.*;
+
 import chat.controller.ChatController;
+
+import java.awt.Dimension;
 import java.awt.event.*;
 
 /**
@@ -25,6 +28,7 @@ private JButton saveButton;
 private JButton loadButton;
 private JButton saveText;
 private JButton readText;
+private JButton analyzeTwitterButton;
 
 public ChatPanel(ChatController baseController)
 {
@@ -45,6 +49,7 @@ public ChatPanel(ChatController baseController)
 	tweetButton = new JButton("Click to tweet");
 	baseLayout.putConstraint(SpringLayout.WEST, tweetButton, 21, SpringLayout.WEST, this);
 	baseLayout.putConstraint(SpringLayout.SOUTH, tweetButton, -76, SpringLayout.NORTH, TextField);
+	analyzeTwitterButton = new JButton("analyze Tweets");
 	
 	setupChatPane();
 	setupPanel();
@@ -62,11 +67,13 @@ private void setupChatPane()
 }
 private void setupPanel()
 {
+	this.add(analyzeTwitterButton);
 	this.add(tweetButton);
 	this.add(textPane);//chatTextArea used to be here
 	this.add(TextField);
 	this.add(chatButton);
 	this.setLayout(baseLayout);
+	this.setPreferredSize(new Dimension(600,600));
 	
 }
 	
@@ -102,6 +109,16 @@ private void setupLayout()
 			public void actionPerformed(ActionEvent clickEvent)
 			{
 				baseController.sendTweet("No text to send");
+			}
+		});
+		
+		analyzeTwitterButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String user = TextField.getText();
+				String results = baseController.analyze(user);
+				chatTextArea.setText(results);
 			}
 		});
 	}
