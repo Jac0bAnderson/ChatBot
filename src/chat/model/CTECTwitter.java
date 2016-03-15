@@ -47,10 +47,23 @@ public void loadTweets(String twitterHandle)throws TwitterException
 	removeCommonEnglishWords(wordList);
 	removeEmptyText();
 }
+/**
+ * Goes through words and takes out .,'?!:;\"()^[]<>- from them.
+ * @param word
+ * @return scrubbedString
+ */
 private String removePunctuation(String word)
 {
-	
-	return null;
+String punctuation = ".,'?!:;\"()^[]<>-";	
+String scrubbedString = "";
+for (int i =0; i < word.length(); i++)
+{
+	if(punctuation.indexOf(word.charAt(i)) == -1)
+	{
+		scrubbedString += word.charAt(i);
+	}
+}
+	return scrubbedString;
 }
 private void removeCommonEnglishWords(ArrayList<String> text)
 {
