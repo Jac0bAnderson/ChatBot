@@ -18,7 +18,7 @@ import twitter4j.*;
  */
 public class CTECTwitter {
 	private ArrayList<Status> statusList;
-	private ArrayList<String> wordList;
+	private ArrayList<String> wordsList;
 	private Twitter chatbotTwitter;
 	private ChatController baseController;
 
@@ -26,7 +26,7 @@ public class CTECTwitter {
 		this.baseController = baseController;
 		chatbotTwitter = TwitterFactory.getSingleton();
 		statusList = new ArrayList<Status>();
-		wordList = new ArrayList<String>();
+		wordsList = new ArrayList<String>();
 
 	}
 
@@ -42,10 +42,10 @@ public class CTECTwitter {
 		for (Status currentStatus : statusList) {
 			String[] tweetText = currentStatus.getText().split(" ");
 			for (String word : tweetText) {
-				wordList.add(removePunctuation(word).toLowerCase());
+				wordsList.add(removePunctuation(word).toLowerCase());
 			}
 		}
-		removeCommonEnglishWords(wordList);
+		removeCommonEnglishWords(wordsList);
 		removeEmptyText();
 	}
 
@@ -108,9 +108,9 @@ public class CTECTwitter {
 	}
 
 	private void removeEmptyText() {
-		for (int spot = 0; spot < wordList.size(); spot++) {
-			if (wordList.get(spot).equals("")) {
-				wordList.remove(spot);
+		for (int spot = 0; spot < wordsList.size(); spot++) {
+			if (wordsList.get(spot).equals("")) {
+				wordsList.remove(spot);
 				spot--;// goes one so it does not miss anything in the list.ie
 						// if there are 2 things that need to be removed that
 						// are next to each other
@@ -127,18 +127,18 @@ public class CTECTwitter {
 			baseController.handleErrors(error.getErrorMessage());
 		}
 	}
-	public String topResults(List <String> wordList)
+	public String topResults()
 	{
 		String tweetResults = "";
 		int topWordLocation = 0;
 		int topCount = 0;
 		
-		for (int index = 0; index < wordList.size(); index ++ )
+		for (int index = 0; index < wordsList.size(); index ++ )
 		{
 			int wordUseCount = 1;
-			for (int spot = index + 1; spot < wordList.size(); spot++)
+			for (int spot = index + 1; spot < wordsList.size(); spot++)
 			{
-				if(wordList.get(index).equals(wordList.get(spot)))
+				if(wordsList.get(index).equals(wordsList.get(spot)))
 				{
 					wordUseCount++;
 				}
@@ -149,7 +149,7 @@ public class CTECTwitter {
 				}
 			}
 		}
-		tweetResults = "The most used word was "+ wordList.get(topWordLocation) + "and it was use " + topCount + " times.";
+		tweetResults = "The most used word was "+ wordsList.get(topWordLocation) + "and it was use " + topCount + " times.";
 		return tweetResults;
 	     
 	}

@@ -80,7 +80,7 @@ String response = "";
 	}
 	public String analyze(String userName)
 	{
-		String userAnalysis = "the twitter user" + userName + "has ";
+		String userAnalysis = "the twitter user" + userName + "has lots of tweets" + chatTwitter.topResults();
 		return userAnalysis;
 	}
 // getters and setterse
