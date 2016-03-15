@@ -65,25 +65,32 @@ public class CTECTwitter {
 		}
 		return scrubbedString;
 	}
-
+/**
+ * Goes through the commonwords list and removes common words.
+ * @param wordsList
+ * @return wordsList
+ */
 	@SuppressWarnings("unchecked")
-	private List removeCommonEnglishWords(List<String> wordList) {
+	private List removeCommonEnglishWords(List<String> wordsList) {
 		String[] boringWords = importWordsToArray();
-		for (int count = 0; count < wordList.size(); count++) {
+		for (int count = 0; count < wordsList.size(); count++) {
 			for (int removeSpot = 0; removeSpot < boringWords.length; removeSpot++) {
-				if (wordList.get(count).equalsIgnoreCase(
+				if (wordsList.get(count).equalsIgnoreCase(
 						boringWords[removeSpot])) {
-					wordList.remove(count);
+					wordsList.remove(count);
 					count--;
 					removeSpot = boringWords.length;
 				}
 			}
 		}
 
-		// removeTwitterUsernamesFromList(wordList)
-		return wordList;
+		// removeTwitterUsernamesFromList(wordsList)
+		return wordsList;
 	}
-
+/**
+ * takes the words from the commonWords and puts them in an Array.
+ * @return boringWords
+ */
 	private String[] importWordsToArray() {
 		String[] boringWords;
 		int wordCount = 0;
@@ -102,11 +109,14 @@ public class CTECTwitter {
 			}
 			wordFile.close();
 		} catch (FileNotFoundException e) {
+			baseController.handleErrors(e.getMessage());
 			return new String[0];
 		}
 		return boringWords;
 	}
-
+/**
+ * removes white space
+ */
 	private void removeEmptyText() {
 		for (int spot = 0; spot < wordsList.size(); spot++) {
 			if (wordsList.get(spot).equals("")) {
@@ -127,6 +137,10 @@ public class CTECTwitter {
 			baseController.handleErrors(error.getErrorMessage());
 		}
 	}
+	/**
+	 * Finds the most used word.
+	 * @return tweetResults
+	 */
 	public String topResults()
 	{
 		String tweetResults = "";
