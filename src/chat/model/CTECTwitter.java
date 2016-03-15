@@ -65,13 +65,36 @@ for (int i =0; i < word.length(); i++)
 }
 	return scrubbedString;
 }
-private void removeCommonEnglishWords(ArrayList<String> text)
+@SuppressWarnings("unchecked")
+private List removeCommonEnglishWords(List<String> wordList)
 {
+	String[] boringWords = importWordsToArray();
+	for(int count =0; count < wordList.size(); count++)
+	{
+		for(int removeSpot =0; removeSpot<boringWords.length; removeSpot++)
+		{
+			if(wordList.get(count).equalsIgnoreCase(boringWords[removeSpot]))
+			{
+				wordList.remove(count);
+				count--;
+				removeSpot = boringWords.length;
+			}
+		}
+	}
 	
+	//removeTwitterUsernamesFromList(wordList)
+	return wordList;
 }
 private void removeEmptyText()
 {
-	
+	for(int spot =0; spot< wordList.size(); spot++)
+	{
+		if(wordList.get(spot).equals(""))
+		{
+			wordList.remove(spot);
+			spot--;//goes one so it does not miss anything in the list.ie if there are 2 things that need to be removed that are next to each other
+		}
+	}
 }
 
 public void sendTweet(String tweet)
