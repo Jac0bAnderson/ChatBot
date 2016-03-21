@@ -30,6 +30,7 @@ private JButton saveText;
 private JButton readText;
 private JButton analyzeTwitterButton;
 
+
 public ChatPanel(ChatController baseController)
 {
 	this.baseController = baseController;
@@ -47,9 +48,9 @@ public ChatPanel(ChatController baseController)
 	
 	TextField.setToolTipText("Type here");
 	tweetButton = new JButton("Click to tweet");
-	baseLayout.putConstraint(SpringLayout.WEST, tweetButton, 21, SpringLayout.WEST, this);
-	baseLayout.putConstraint(SpringLayout.SOUTH, tweetButton, -76, SpringLayout.NORTH, TextField);
+	
 	analyzeTwitterButton = new JButton("analyze Tweets");
+	
 	
 	setupChatPane();
 	setupPanel();
@@ -74,6 +75,7 @@ private void setupPanel()
 	this.add(chatButton);
 	this.setLayout(baseLayout);
 	this.setPreferredSize(new Dimension(600,600));
+	chatTextArea.setText(baseController.getChatView().queryWord());
 	
 }
 	
@@ -89,6 +91,10 @@ private void setupLayout()
 	baseLayout.putConstraint(SpringLayout.WEST, TextField, 10, SpringLayout.WEST, this);
 	baseLayout.putConstraint(SpringLayout.SOUTH, TextField, -10, SpringLayout.SOUTH, this);
 	baseLayout.putConstraint(SpringLayout.EAST, chatButton, -10, SpringLayout.EAST, this);
+	baseLayout.putConstraint(SpringLayout.WEST, tweetButton, 21, SpringLayout.WEST, this);
+	baseLayout.putConstraint(SpringLayout.SOUTH, tweetButton, -76, SpringLayout.NORTH, TextField);
+	baseLayout.putConstraint(SpringLayout.WEST, analyzeTwitterButton, 0, SpringLayout.WEST, tweetButton);
+	baseLayout.putConstraint(SpringLayout.SOUTH, analyzeTwitterButton, -38, SpringLayout.NORTH, tweetButton);
 }
 	private void setupListeners()
 	{

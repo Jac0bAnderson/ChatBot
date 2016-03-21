@@ -35,10 +35,16 @@ public class ChatView
 	 */
 	public String grabInput(String displayText)
 	{
-		String userAnswer = JOptionPane.showInputDialog(null, displayText, windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon, null, "Answer here " ).toString();
+		String userAnswer = JOptionPane.showInputDialog(null, displayText, windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon, null, "Answer here " )+"";
 		
 		return userAnswer;
 	} 
+	public String queryWord()
+	{
+        String querySearch = JOptionPane.showInputDialog(null, "What do you want to search for?", "querySearch",JOptionPane.PLAIN_MESSAGE, chatIcon, null,"")+"";
+		
+		return querySearch;
+	}
 	
 
 	

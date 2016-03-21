@@ -30,7 +30,10 @@ public class CTECTwitter {
 
 	}
 
-	public void loadTweets(String twitterHandle) throws TwitterException {
+	public void loadTweets(String twitterHandle) throws TwitterException 
+	{
+		statusList.clear();
+		wordsList.clear();
 		Paging statusPage = new Paging(1, 200);
 		int page = 1;
 		while (page <= 10) {
@@ -56,6 +59,7 @@ public class CTECTwitter {
 	 * @return scrubbedString
 	 */
 	private String removePunctuation(String word) {
+		
 		String punctuation = ".,'?!:;\"()^[]<>-";
 		String scrubbedString = "";
 		for (int i = 0; i < word.length(); i++) {
@@ -94,24 +98,23 @@ public class CTECTwitter {
 	private String[] importWordsToArray() {
 		String[] boringWords;
 		int wordCount = 0;
-		try {
-			Scanner wordFile = new Scanner(new File("commonWords.txt"));
+		
+			Scanner wordFile = new Scanner(getClass().getResourceAsStream("commonWords.txt"));
+			
 			while (wordFile.hasNext()) {
 				wordCount++;
 				wordFile.next();
 			}
-			wordFile.reset();
+			wordFile = new Scanner(getClass().getResourceAsStream("commonWords.txt"));
 			boringWords = new String[wordCount];
 			int boringWordCount = 0;
+			
 			while (wordFile.hasNext()) {
 				boringWords[boringWordCount] = wordFile.next();
 				boringWordCount++;
 			}
 			wordFile.close();
-		} catch (FileNotFoundException e) {
-			baseController.handleErrors(e.getMessage());
-			return new String[0];
-		}
+		
 		return boringWords;
 	}
 /**
@@ -163,9 +166,31 @@ public class CTECTwitter {
 				}
 			}
 		}
-		tweetResults = "The most used word was "+ wordsList.get(topWordLocation) + "and it was use " + topCount + " times.";
+		tweetResults = "The most used word was "+ wordsList.get(topWordLocation) + " and it was use   " +topCount+ "   times.";
 		return tweetResults;
 	     
+	}
+	public String tweetInvestigation(String topic)
+	{
+		String results = "";
+		Query query = new Query(topic);
+		query.setCount(100);
+		query.setGeoCode(new GeoLocation(40.5398930, -111.8856730), 50, Query.MILES);
+		query.setSince("2015-1-1");
+		try
+		{
+			QueryResult result = chatbotTwitter.search(query);
+			results.concat("count: "+result.getTweets().size());
+			for(Status tweet : result.getTweets())
+			{
+				results.concat("@" +tweet.getUser().getName() + ": "+tweet.getText()+"\n");
+			}
+		}
+		catch(TwitterException error)
+		{
+			error.printStackTrace();
+		}
+		return results;
 	}
 
 }
