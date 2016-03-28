@@ -173,11 +173,11 @@ public class CTECTwitter {
 	public String tweetInvestigation()
 	{
 		String results = "";
-		Query query = new Query("uh oh");
+		Query query = new Query("Alta");
 		//Query query = new Query(topic);
 		//System.out.println(topic);
 		query.setCount(100);
-		query.setGeoCode(new GeoLocation(40.748817, -73.985428), 50, Query.MILES);
+		query.setGeoCode(new GeoLocation(40.53992370784733, -111.88577681779861), 50, Query.MILES);
 		query.setSince("2015-1-1");
 		try
 		{
