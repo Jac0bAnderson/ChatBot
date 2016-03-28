@@ -41,8 +41,8 @@ public class ChatView
 	} 
 	public String queryWord()
 	{
-        String querySearch = JOptionPane.showInputDialog(null, "What do you want to search for?", "querySearch",JOptionPane.PLAIN_MESSAGE, chatIcon, null,"")+"";
-		
+        //String querySearch = JOptionPane.showInputDialog(null, "What do you want to search for?", "querySearch",JOptionPane.PLAIN_MESSAGE, chatIcon, null,"")+"";
+		String querySearch = "asdf";
 		return querySearch;
 	}
 	

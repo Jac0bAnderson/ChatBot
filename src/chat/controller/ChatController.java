@@ -34,8 +34,8 @@ public ChatController()
 	{
 		myDisplay.showOutput("hello "  +myChatBot.getUserName());
 		chat();
-		myDisplay.queryWord();
-		moreQuery("");
+		//myDisplay.queryWord();
+		//moreQuery("");
 		
 		
 	}
@@ -97,13 +97,19 @@ String response = "";
 		userAnalysis += chatTwitter.topResults();
 		return userAnalysis;
 	}
-	
+	public String investigateTweet()
+	{
+		String userInvestigation = "";
+		
+		userInvestigation += chatTwitter.tweetInvestigation();
+		return userInvestigation;
+	}
 	public String moreQuery(String question)
 	{
 	String answer = "";
 	answer = myDisplay.queryWord();
 	//System.out.println(answer);
-	chatTwitter.tweetInvestigation(answer);
+	//chatTwitter.tweetInvestigation(answer);
 	return answer;
 	}
 // getters and setterse

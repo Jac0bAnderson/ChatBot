@@ -75,7 +75,7 @@ private void setupPanel()
 	this.add(chatButton);
 	this.setLayout(baseLayout);
 	this.setPreferredSize(new Dimension(600,600));
-	chatTextArea.setText(baseController.getChatView().queryWord());
+	//chatTextArea.setText(baseController.getChatView().queryWord());
 	
 }
 	
@@ -123,7 +123,7 @@ private void setupLayout()
 			public void actionPerformed(ActionEvent click)
 			{
 				String user = TextField.getText();
-				String results = baseController.analyze(user);
+				String results = baseController.investigateTweet();
 				chatTextArea.setText(results);
 			}
 		});
