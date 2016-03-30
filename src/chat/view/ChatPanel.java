@@ -5,6 +5,7 @@ package chat.view;
 import javax.swing.*;
 
 import chat.controller.ChatController;
+import chat.controller.IOController;
 
 import java.awt.Dimension;
 import java.awt.event.*;
@@ -29,6 +30,7 @@ private JButton loadButton;
 private JButton saveText;
 private JButton readText;
 private JButton analyzeTwitterButton;
+private JLabel promptLabel;
 
 
 public ChatPanel(ChatController baseController)
@@ -50,6 +52,10 @@ public ChatPanel(ChatController baseController)
 	tweetButton = new JButton("Click to tweet");
 	
 	analyzeTwitterButton = new JButton("analyze Tweets");
+	promptLabel = new JLabel(" ");
+	saveButton= new JButton("Save");
+	loadButton = new JButton("load");
+	
 	
 	
 	setupChatPane();
@@ -63,11 +69,15 @@ private void setupChatPane()
 	chatTextArea.setWrapStyleWord(true);
 	chatTextArea.setEditable(false);
 	textPane = new JScrollPane(chatTextArea);
+	baseLayout.putConstraint(SpringLayout.EAST, loadButton, -6, SpringLayout.WEST, textPane);
 	textPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 	textPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 }
 private void setupPanel()
 {
+	this.add(loadButton);
+	this.add(saveButton);
+	this.add(promptLabel);
 	this.add(analyzeTwitterButton);
 	this.add(tweetButton);
 	this.add(textPane);//chatTextArea used to be here
@@ -81,6 +91,11 @@ private void setupPanel()
 	
 private void setupLayout()
 {
+	baseLayout.putConstraint(SpringLayout.WEST, saveButton, 0, SpringLayout.WEST, loadButton);
+	baseLayout.putConstraint(SpringLayout.SOUTH, saveButton, -6, SpringLayout.NORTH, loadButton);
+	baseLayout.putConstraint(SpringLayout.SOUTH, loadButton, -139, SpringLayout.NORTH, analyzeTwitterButton);
+	baseLayout.putConstraint(SpringLayout.NORTH, promptLabel, 5, SpringLayout.NORTH, tweetButton);
+	baseLayout.putConstraint(SpringLayout.EAST, promptLabel, 0, SpringLayout.EAST, TextField);
 	baseLayout.putConstraint(SpringLayout.NORTH, textPane, 20, SpringLayout.NORTH, this);
 	baseLayout.putConstraint(SpringLayout.WEST, textPane, 100, SpringLayout.WEST, this);
 	baseLayout.putConstraint(SpringLayout.SOUTH, textPane, 250, SpringLayout.NORTH, this);
@@ -125,6 +140,22 @@ private void setupLayout()
 				String user = TextField.getText();
 				String results = baseController.investigateTweet();
 				chatTextArea.setText(results);
+			}
+		});
+		saveButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String file = IOController.saveFile(chatTextArea.getText());
+				promptLabel.setText(file);
+			}
+		});
+		loadButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String loadedText = IOController.readTextFromFile(promptLabel.getText());
+				chatTextArea.setText(loadedText);
 			}
 		});
 	}
