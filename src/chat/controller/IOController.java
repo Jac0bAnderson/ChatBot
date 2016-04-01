@@ -19,7 +19,7 @@ public class IOController
 		try
 		{
 			chatWriter = new FileWriter(fileName);
-			chatWriter.write("this is the " + fileName + "/n");
+			//chatWriter.write("this is the " + fileName + "/n");
 			chatWriter.write(textToSave);
 			chatWriter.close();
 			JOptionPane.showMessageDialog(null, "File saved as: " + fileName);

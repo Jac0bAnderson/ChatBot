@@ -34,8 +34,8 @@ public ChatController()
 	{
 		myDisplay.showOutput("hello "  +myChatBot.getUserName());
 		chat();
-		//myDisplay.queryWord();
-		//moreQuery("");
+		myDisplay.queryWord();
+		moreQuery("");
 		
 		
 	}
@@ -97,11 +97,11 @@ String response = "";
 		userAnalysis += chatTwitter.topResults();
 		return userAnalysis;
 	}
-	public String investigateTweet()
+	public String investigateTweet(String topic)
 	{
-		String userInvestigation = "";
+		String userInvestigation = topic;
 		
-		userInvestigation += chatTwitter.tweetInvestigation();
+		userInvestigation += chatTwitter.tweetInvestigation(userInvestigation);
 		return userInvestigation;
 	}
 	public String moreQuery(String question)

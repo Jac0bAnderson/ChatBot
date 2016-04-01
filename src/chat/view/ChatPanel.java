@@ -31,6 +31,7 @@ private JButton saveText;
 private JButton readText;
 private JButton analyzeTwitterButton;
 private JLabel promptLabel;
+private JButton mostUsedWord;
 
 
 public ChatPanel(ChatController baseController)
@@ -52,9 +53,12 @@ public ChatPanel(ChatController baseController)
 	tweetButton = new JButton("Click to tweet");
 	
 	analyzeTwitterButton = new JButton("analyze Tweets");
-	promptLabel = new JLabel(" ");
+	promptLabel = new JLabel("Welcome To The OGChatBot X-perience");
+	
 	saveButton= new JButton("Save");
 	loadButton = new JButton("load");
+	mostUsedWord = new JButton("Most Used Word");
+	
 	
 	
 	
@@ -75,6 +79,7 @@ private void setupChatPane()
 }
 private void setupPanel()
 {
+	this.add(mostUsedWord);
 	this.add(loadButton);
 	this.add(saveButton);
 	this.add(promptLabel);
@@ -91,11 +96,13 @@ private void setupPanel()
 	
 private void setupLayout()
 {
+	baseLayout.putConstraint(SpringLayout.SOUTH, mostUsedWord, -23, SpringLayout.NORTH, analyzeTwitterButton);
+	baseLayout.putConstraint(SpringLayout.EAST, mostUsedWord, 0, SpringLayout.EAST, analyzeTwitterButton);
+	baseLayout.putConstraint(SpringLayout.NORTH, promptLabel, 5, SpringLayout.NORTH, tweetButton);
+	baseLayout.putConstraint(SpringLayout.WEST, promptLabel, 59, SpringLayout.EAST, tweetButton);
 	baseLayout.putConstraint(SpringLayout.WEST, saveButton, 0, SpringLayout.WEST, loadButton);
 	baseLayout.putConstraint(SpringLayout.SOUTH, saveButton, -6, SpringLayout.NORTH, loadButton);
 	baseLayout.putConstraint(SpringLayout.SOUTH, loadButton, -139, SpringLayout.NORTH, analyzeTwitterButton);
-	baseLayout.putConstraint(SpringLayout.NORTH, promptLabel, 5, SpringLayout.NORTH, tweetButton);
-	baseLayout.putConstraint(SpringLayout.EAST, promptLabel, 0, SpringLayout.EAST, TextField);
 	baseLayout.putConstraint(SpringLayout.NORTH, textPane, 20, SpringLayout.NORTH, this);
 	baseLayout.putConstraint(SpringLayout.WEST, textPane, 100, SpringLayout.WEST, this);
 	baseLayout.putConstraint(SpringLayout.SOUTH, textPane, 250, SpringLayout.NORTH, this);
@@ -122,6 +129,8 @@ private void setupLayout()
 				chatTextArea.setText("");
 				String response = baseController.userToChatBot(userText); 
 				chatTextArea.append("\nChatbot: " + response); 
+				promptLabel.setText("Chatting");
+				TextField.setText("");
 			}
 		
 		});
@@ -129,7 +138,11 @@ private void setupLayout()
 		{
 			public void actionPerformed(ActionEvent clickEvent)
 			{
-				baseController.sendTweet("No text to send");
+				String tweetToSend = TextField.getText();
+				baseController.sendTweet(tweetToSend);
+				promptLabel.setText("sent tweet: " + tweetToSend);
+				TextField.setText("");
+				
 			}
 		});
 		
@@ -137,9 +150,11 @@ private void setupLayout()
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				String user = TextField.getText();
-				String results = baseController.investigateTweet();
+				String topic = TextField.getText();
+				String results = baseController.investigateTweet(topic);
 				chatTextArea.setText(results);
+				promptLabel.setText("Analyzing twitter for " +topic);
+				TextField.setText("");
 			}
 		});
 		saveButton.addActionListener(new ActionListener()
@@ -156,7 +171,16 @@ private void setupLayout()
 			{
 				String loadedText = IOController.readTextFromFile(promptLabel.getText());
 				chatTextArea.setText(loadedText);
+				promptLabel.setText("File loaded");
 			}
+		});
+		mostUsedWord.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent clickEvent)
+			{
+				
+			}
+		
 		});
 	}
 	public ChatController getBaseController() {

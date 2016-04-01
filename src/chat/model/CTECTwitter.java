@@ -132,9 +132,10 @@ public class CTECTwitter {
 	}
 
 	public void sendTweet(String tweet) {
-		String tweetTExt = JOptionPane.showInputDialog("");
+		//String tweetTExt = JOptionPane.showInputDialog("");
+		String tWeet = tweet;
 		try {
-			chatbotTwitter.updateStatus(tweetTExt);
+			chatbotTwitter.updateStatus(tWeet);
 		} catch (TwitterException error) {
 
 			baseController.handleErrors(error.getErrorMessage());
@@ -170,12 +171,12 @@ public class CTECTwitter {
 		return tweetResults;
 	     
 	}//String topic
-	public String tweetInvestigation()
+	public String tweetInvestigation(String topic)
 	{
 		String results = "";
-		Query query = new Query("Alta");
-		//Query query = new Query(topic);
-		//System.out.println(topic);
+		//Query query = new Query("Alta");
+		Query query = new Query(topic);
+		System.out.println(topic);
 		query.setCount(100);
 		query.setGeoCode(new GeoLocation(40.53992370784733, -111.88577681779861), 50, Query.MILES);
 		query.setSince("2015-1-1");
